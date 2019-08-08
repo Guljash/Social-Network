@@ -1,0 +1,19 @@
+.header{
+    grid-area: h;
+    background-color: #262626;
+    height: 50px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    width:40px;
+    margin: 2px;
+}
+
+.header span{
+    color: #00d8ff;
+    font-size: 20px;
+    margin-left: 10px;
+}
