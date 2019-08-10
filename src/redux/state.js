@@ -1,5 +1,6 @@
-import { renderTree } from "../render";
-
+let renderTree = () => {
+    console.log('State was changed')
+}
 const state = {
     dialogsPage: {
         messageData: [
@@ -19,16 +20,17 @@ const state = {
             { id: 1, message: "Hi, how are you?" },
             { id: 2, message: "It`s my first post" },
         ],
+        newPostText: ""
     }
 };
 
-export const addPost = (postMessage) => {
+export const addPost = () => {
     const newPost = {
         id: 5,
-        message: postMessage
+        message: state.profilePage.newPostText
     };
-
     state.profilePage.postData.push(newPost);
+    state.profilePage.newPostText = '';
     renderTree(state);
 }
 
@@ -38,6 +40,15 @@ export const setActive = (id, path) => {
     }
     path[id-1].isActive = !path[id-1].isActive;
     renderTree(state);
+}
+
+export const changeText = (text) => {
+    state.profilePage.newPostText = text;
+    renderTree(state);
+}
+
+export const subscrube = (observer) => {
+    renderTree = observer;
 }
 
 export default state;

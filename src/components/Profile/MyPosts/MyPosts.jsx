@@ -5,14 +5,18 @@ import styles from './MyPosts.module.css';
 
 const MyPosts = (props) => {
 
-  const postElements = props.state.map(el => (<Post message={el.message} />))
+  const postElements = props.state.postData.map(el => (<Post message={el.message} />))
 
   let newPostElement = React.createRef();
 
   const addPost = () => {
-    let text = newPostElement.current.innerText;
-    props.addPost(text);
-    newPostElement.current.innerText = "";
+    props.addPost();
+    props.changeText('');
+  }
+
+  const onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.changeText(text);
   }
 
   return (
@@ -20,7 +24,7 @@ const MyPosts = (props) => {
       <h1>My posts</h1>
       <div className={styles.inputForm}>
         <div>
-          <div contenteditable="true" placeholder="Type something..." ref={newPostElement} className={styles.textarea}></div>
+          <textarea onChange={onPostChange} placeholder="Type something..." ref={newPostElement} className={styles.textarea} value={props.state.newPostText}></textarea>
         </div>
         <div className={styles.buttonWrapper}>
           <button onClick={addPost}>Write</button>
