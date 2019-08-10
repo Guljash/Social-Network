@@ -8,10 +8,11 @@ const Nav = () => {
     <nav className={styles.nav}>
       <ul>
         <li><NavLink to="/Profile" activeClassName={styles.activeLink}>Profile</NavLink></li>
+        <li><NavLink to="/Friends" activeClassName={styles.activeLink}>Friends</NavLink></li>
         <li><NavLink to="/Dialogs" activeClassName={styles.activeLink}>Messages</NavLink></li>
         <li>News</li>
         <li>Music</li>
-        <li>Settings</li>
+        <li className={styles.settings}>Settings</li>
       </ul>
     </nav>
   );

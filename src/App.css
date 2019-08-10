@@ -4,6 +4,26 @@ body{
     font-family: 'PT Sans', sans-serif;
     font-weight:500;
     background-color:#ededed;
+    overflow-x: hidden;
+}
+
+a {
+    color: gray;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+	background: rgba(46,158,246,0.8); 
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(46,158,246,0.4); 
 }
 
 .app-wrapper{
@@ -15,6 +35,7 @@ body{
     "n c";
     grid-template-rows: 20px 1fr;
     grid-template-columns: 2fr 10fr;
+    margin-bottom: 30px;
 }
 
 .app-wrapper-content{

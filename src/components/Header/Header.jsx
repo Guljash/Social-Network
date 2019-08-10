@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <img src="https://sap.github.io/ui5-webcomponents/images/react.svg" alt="logo"/>
-      <span>PythoNet</span>
+      <span>JsPower!</span>
     </header>
   );
 }

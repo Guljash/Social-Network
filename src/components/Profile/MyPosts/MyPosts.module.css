@@ -6,40 +6,59 @@
     padding: 20px;
 }
 
-textarea{
-    background: rgb(255, 255, 255);
-    margin: 10px 10px 10px 0;
+.textarea{
+    background-color: #fafbfc;
+    border: 1px solid #e1e4e8;
+    border-radius: 7px;
+    box-shadow: inset 0 0 2px rgba(27,31,35,0.3);
     resize: none;
-    overflow: auto;
     width: 500px;
-    height: 20px;
+    min-height: 20px;
+    padding: 10px;
+    margin: 10px 10px 0 0;
     font-family: inherit;
+    color: inherit;
 }
 
-textarea:focus{
-    height: 50px;
-    transition: 0.2s;
+.textarea:focus{
+    outline: none;
 }
 
-button{
-    background-color: rgb(17, 112, 255);
+[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    opacity: 0.4;
+    display: block; /* For Firefox */
+  }
+
+.buttonWrapper button{
+	background: linear-gradient(to right, #2e9ef6, #2596f0);
     border: none;
-    height: 25px;
-    width: 50px;
-    border-radius: 5px;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    height: 30px;
+    width: 70px;
+    border-radius: 0 7px 7px 0;
     color: #fff;
     cursor: pointer;
+    float: right;
 }
 
-button:hover{
-    background-color: rgb(0, 38, 255)
+.buttonWrapper button:hover{
+    background: rgb(0, 38, 255)
 }
 
 .inputForm{
     border-bottom: 1px solid rgb(175, 175, 175);
+}
+
+.buttonWrapper{
+    background: rgb(237, 238, 240);
+    box-shadow: inset 0 0 5px rgba(27,31,35,0.2);
+    width: 520px;
+    height: 30px;
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+    border-radius: 7px;
 }
 
 h1{

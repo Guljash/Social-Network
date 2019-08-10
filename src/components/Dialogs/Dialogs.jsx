@@ -5,16 +5,23 @@ import Message from './Message/Message';
 
 const Dialogs = (props) => {
 
-  const dialogsElements = props.dd.map(el => (<Dialog name={el.name} id={el.id} />))
-  const messagesElements = props.md.map(el => (<Message text={el.text} id={el.id} />))
+  const dialogsElements = props.state.dialogsData.map(el => (<Dialog state={el} path={props.state.dialogsData} setActive={props.setActive} />))
+
+  const messagesElements = props.state.messageData.map(el => (<Message text={el.text} id={el.id} isMyMessage={el.isMyMessage} />))
 
   return (
     <div className={styles.dialogs}>
-      <div className={styles.dialogsList}>
+      <div>
         {dialogsElements}
       </div>
       <div className={styles.messages}>
-        {messagesElements}
+        <div className={styles.messagesInput}>
+          <textarea className={styles.textarea} placeholder="Write your message here" />
+          <button>Send</button>
+        </div>
+        <div className={styles.messagesBox}>
+          {messagesElements}
+        </div>
       </div>
     </div>
   );

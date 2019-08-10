@@ -32,3 +32,6 @@ li:hover{
     border-right: 1px solid rgba(175, 175, 175, 0.5);
     color: gray;
 }
+ .settings{
+     margin-top: 50px;
+ }

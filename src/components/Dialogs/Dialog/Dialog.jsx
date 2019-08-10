@@ -4,9 +4,15 @@ import { NavLink } from "react-router-dom";
 
 const Dialog = (props) => {
 
+  const setActive = () => {
+    let id = props.state.id
+    let path = props.path;
+    props.setActive(id, path);
+  }
+
   return (
-    <NavLink to={`/dialogs/${props.id}`}>
-      <div className={styles.dialog}>{props.name}</div>
+    <NavLink to={`/dialogs/${props.state.id}`}>
+      <div onClick={setActive} className={props.state.isActive ? styles.active : styles.dialog}>{props.state.name}</div>
     </NavLink>
   );
 }

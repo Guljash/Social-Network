@@ -5,26 +5,59 @@
     grid-template-columns: 200px 1fr;
 }
 
-.dialogsList{
-    height: 90vh;
-}
-
-.dialog{
-    font-size: 20px;
-    width: 150px;
-    color:#fff;
-    background-color: #262626;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 7px;
-    padding: 20px;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
 .messages{
     margin-left: 20px;
     background-color:rgb(237, 238, 240);
     border-radius: 7px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-    padding: 20px;
+    display: grid;
+    grid-template-rows: 10fr 40px;
+}
+
+.textarea{
+    background: transparent;
+    border: none;
+    border-radius: 0 0 7px 7px;
+    resize: none;
+    width: 500px;
+    height: 20px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 17px;
+    color: #fff;
+    overflow: hidden;
+}
+
+.textarea:focus{
+    outline: none;
+}
+
+.textarea::-webkit-input-placeholder{ 
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.messagesInput{
+    background-color: #262626;
+    grid-row-start: 2;
+    border-radius: 0 0 7px 7px;
+}
+
+.messagesInput button{
+	background: linear-gradient(to right, #2e9ef6, #2596f0);
+    border: none;
+    height: 40px;
+    width: 70px;
+    border-radius: 0 0 7px 0;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+}
+
+.messagesInput button:hover{
+    background: rgb(0, 38, 255)
+}
+
+
+.messagesBox{
+    grid-row-start: 1;
 }
