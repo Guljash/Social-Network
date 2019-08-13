@@ -2,16 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
-import { addPost, setActive, changeText, subscrube } from './redux/state'
-import state from './redux/state'
+import store from './redux/state'
 
 let renderTree = (state) => {
-    ReactDOM.render(<App state={state} addPost={addPost} setActive={setActive} changeText={changeText} />, document.getElementById('root'));
+    ReactDOM.render(<App 
+                        state={state} 
+                        addPost={store.addPost.bind(store)} 
+                        setActive={store.setActive.bind(store)} 
+                        changeText={store.changeText.bind(store)} />, document.getElementById('root'));
 }
 
-renderTree(state);
+renderTree(store.getState());
 
-subscrube(renderTree);
+store.subscribe(renderTree);
 
 
 
