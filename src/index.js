@@ -5,11 +5,7 @@ import App from './App';
 import store from './redux/state'
 
 let renderTree = (state) => {
-    ReactDOM.render(<App 
-                        state={state} 
-                        addPost={store.addPost.bind(store)} 
-                        setActive={store.setActive.bind(store)} 
-                        changeText={store.changeText.bind(store)} />, document.getElementById('root'));
+    ReactDOM.render(<App state={state} dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
 }
 
 renderTree(store.getState());

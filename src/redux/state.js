@@ -27,36 +27,41 @@ const store = {
         return this._state
     },
 
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
+
     _callSubscriber() {
         console.log('State was changed')
     },
 
-    addPost() {
-        const newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText
-        };
-        this._state.profilePage.postData.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-
-    setActive(id, path) {
-        for (let i of path) {
-            i.isActive = false;
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD_POST':
+                const newPost = {
+                    id: 5,
+                    message: this._state.profilePage.newPostText
+                };
+                this._state.profilePage.postData.push(newPost);
+                this._state.profilePage.newPostText = '';
+                this._callSubscriber(this._state);
+                break;
+            case 'SET_ACTIVE':
+                for (let i of action.path) {
+                    i.isActive = false;
+                }
+                action.path[action.id - 1].isActive = !action.path[action.id - 1].isActive;
+                this._callSubscriber(this._state);
+                break;
+            case 'CHANGE_TEXT':
+                this._state.profilePage.newPostText = action.text;
+                this._callSubscriber(this._state);
+                break;
+            default:
+                console.log('Error')
         }
-        path[id - 1].isActive = !path[id - 1].isActive;
-        this._callSubscriber(this._state);
     },
-
-    changeText(text) {
-        this._state.profilePage.newPostText = text;
-        this._callSubscriber(this._state);
-    },
-
-    subscribe(observer) {
-        this._callSubscriber = observer;
-    }
 }
+
 
 export default store;

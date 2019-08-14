@@ -7,7 +7,7 @@ const Dialog = (props) => {
   const setActive = () => {
     let id = props.state.id
     let path = props.path;
-    props.setActive(id, path);
+    props.dispatch({ type: 'SET_ACTIVE', id: id, path: path });
   }
 
   return (
