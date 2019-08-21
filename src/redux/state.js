@@ -1,3 +1,7 @@
+const ADD_POST = 'ADD_POST'
+const CHANGE_TEXT = 'CHANGE_TEXT'
+const SET_ACTIVE = 'SET_ACTIVE'
+
 const store = {
 
     _state: {
@@ -62,6 +66,28 @@ const store = {
         }
     },
 }
+
+export const addPostActionCreator = () => {
+    return {
+        type: ADD_POST
+    }
+}
+
+export const changeTextActionCreator = (text) => {
+    return {
+        type: CHANGE_TEXT,
+        text: text,
+    }
+}
+
+export const setActiveActionCreator = (id, path) => {
+    return {
+        type: SET_ACTIVE,
+        id: id,
+        path: path,
+    }
+}
+
 
 
 export default store;

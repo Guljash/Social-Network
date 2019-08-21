@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from './Dialog.module.css';
 import { NavLink } from "react-router-dom";
+import { setActiveActionCreator } from '../../../redux/state';
 
 const Dialog = (props) => {
 
   const setActive = () => {
     let id = props.state.id
     let path = props.path;
-    props.dispatch({ type: 'SET_ACTIVE', id: id, path: path });
+    props.dispatch(setActiveActionCreator(id, path));
   }
 
   return (
