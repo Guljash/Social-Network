@@ -1,23 +1,20 @@
 import React from 'react';
 import Post from './Post/Post';
 import styles from './MyPosts.module.css';
-import { changeTextActionCreator, addPostActionCreator } from './../../../redux/profileReducer'
 
 
 const MyPosts = (props) => {
 
-  const postElements = props.state.postData.map(el => (<Post message={el.message} />))
+  const postElements = props.profilePage.postData.map(el => (<Post key={el.id} message={el.message} />))
 
-  let newPostElement = React.createRef();
-
-  const addPost = () => {
+  const onAddPost = () => {
+    props.addPost()
     // props.dispatch({ type: 'ADD_POST' });
-    props.dispatch(addPostActionCreator());
   }
 
-  const onPostChange = () => {
-    let text = newPostElement.current.value;
-    props.dispatch(changeTextActionCreator(text));
+  const onPostChange = (e) => {
+    let text = e.target.value;
+    props.changeText(text)
   }
 
   return (
@@ -25,10 +22,10 @@ const MyPosts = (props) => {
       <h1>My posts</h1>
       <div className={styles.inputForm}>
         <div>
-          <textarea onChange={onPostChange} placeholder="Type something..." ref={newPostElement} className={styles.textarea} value={props.state.newPostText}></textarea>
+          <textarea onChange={onPostChange} placeholder="Type something..." className={styles.textarea} value={props.profilePage.newPostText}></textarea>
         </div>
         <div className={styles.buttonWrapper}>
-          <button onClick={addPost}>Write</button>
+          <button onClick={onAddPost}>Write</button>
         </div>
       </div>
       <div>

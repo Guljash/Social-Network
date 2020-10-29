@@ -2,18 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
-import store from './redux/reduxStore'
+import store from './redux/reduxStore';
+import { Provider } from 'react-redux';
 
-let renderTree = (state) => {
-    ReactDOM.render(<App state={state} dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
-}
 
-renderTree(store.getState());
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
-store.subscribe(() => {
-    let state = store.getState();
-    renderTree(state);
-});
+
+// renderTree();
+
+// store.subscribe(() => {
+//     // let state = store.getState();
+//     renderTree();
+// });
 
 
 

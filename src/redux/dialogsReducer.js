@@ -2,7 +2,7 @@ const CHANGE_MESSAGE_TEXT = 'CHANGE_MESSAGE_TEXT'
 const SET_ACTIVE = 'SET_ACTIVE'
 const ADD_MESSAGE = "ADD_MESSAGE"
 
-const initialState =  {
+const initialState = {
     messageData: [
         { id: 1, text: "Hi", isMyMessage: true },
         { id: 2, text: "It`s my new message", isMyMessage: true },
@@ -18,30 +18,44 @@ const initialState =  {
 }
 
 const dialogsReducer = (state = initialState, action) => {
+    
     switch (action.type) {
         case ADD_MESSAGE:
-            let idMsg = state.messageData[state.messageData.length-1].id + 1
+            let idMsg = state.messageData[state.messageData.length - 1].id + 1
             const newMessage = {
                 id: idMsg,
                 text: state.newMessageText,
                 isMyMessage: true
             };
-            state.messageData.push(newMessage);
-            state.newMessageText = '';
-            break;
+            if (state.newMessageText !== '') {
+                return {
+                    ...state,
+                    messageData: [...state.messageData, newMessage],
+                    newMessageText: ''
+                }
+            }
+            else {
+                return state
+            }
         case SET_ACTIVE:
-            for (let i of action.path) {
+            let stateCopy = {
+                ...state,
+                dialogsData: [...state.dialogsData]
+            };
+            for (let i of stateCopy.dialogsData) {
                 i.isActive = false;
             }
-            action.path[action.id - 1].isActive = !action.path[action.id - 1].isActive;
-            break;
+            let path = stateCopy.dialogsData[action.id - 1];
+            path.isActive = !path.isActive;
+            return stateCopy;
         case CHANGE_MESSAGE_TEXT:
-            state.newMessageText = action.text;
-            break;
+            return {
+                ...state,
+                newMessageText: action.text
+            };
         default:
-            console.log('Error')
+            return state
     }
-    return state
 }
 
 export const addMessageActionCreator = () => {
@@ -57,11 +71,10 @@ export const changeMessageTextActionCreator = (text) => {
     }
 }
 
-export const setActiveActionCreator = (id, path) => {
+export const setActiveActionCreator = (id) => {
     return {
         type: SET_ACTIVE,
-        id: id,
-        path: path,
+        id: id
     }
 }
 

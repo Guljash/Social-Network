@@ -1,12 +1,12 @@
 import React from 'react';
-import MyPosts from './MyPosts/MyPosts';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
 
 const Profile = (props) => {
   return (
     <div>
       <ProfileHeader />
-      <MyPosts state={props.state} dispatch={props.dispatch} />
+      <MyPostsContainer store={props.store} />
     </div>
   );
 }

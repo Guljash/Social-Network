@@ -48,3 +48,8 @@ const store = {
 }
 
 export default store;
+
+action = {
+    type: "ADD-POST", 
+    
+}

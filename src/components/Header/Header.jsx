@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './Header.module.css'
+import pic from './reacdux.png'
 
 const Header = () => {
   return (
     <header className={styles.header}>
-      <img src="https://sap.github.io/ui5-webcomponents/images/react.svg" alt="logo"/>
-      <span>JsPower!</span>
+      <img src={pic} alt="logo"/>
+      <span>React + Redux</span>
     </header>
   );
 }
