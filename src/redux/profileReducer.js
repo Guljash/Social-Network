@@ -1,7 +1,7 @@
 const ADD_POST = 'ADD_POST'
 const CHANGE_TEXT = 'CHANGE_TEXT'
 
-let initialState =  {
+let initialState = {
     postData: [
         { id: 2, message: "Hi, how are you?" },
         { id: 1, message: "It`s my first post" },
@@ -12,8 +12,8 @@ let initialState =  {
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_POST: {
-            let idPost = state.postData[state.postData.length-1].id + 1
+        case ADD_POST:
+            let idPost = state.postData[state.postData.length - 1].id + 1
             const newPost = {
                 id: idPost,
                 message: state.newPostText
@@ -25,16 +25,14 @@ const profileReducer = (state = initialState, action) => {
                     newPostText: ''
                 }
             }
-            else{
+            else {
                 return state
             }
-        }
-        case CHANGE_TEXT: {
+        case CHANGE_TEXT:
             return {
                 ...state,
                 newPostText: action.text
             }
-        }
         default:
             return state
 

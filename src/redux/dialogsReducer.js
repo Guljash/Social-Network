@@ -18,7 +18,7 @@ const initialState = {
 }
 
 const dialogsReducer = (state = initialState, action) => {
-    
+
     switch (action.type) {
         case ADD_MESSAGE:
             let idMsg = state.messageData[state.messageData.length - 1].id + 1
@@ -38,16 +38,16 @@ const dialogsReducer = (state = initialState, action) => {
                 return state
             }
         case SET_ACTIVE:
-            let stateCopy = {
+            return {
                 ...state,
-                dialogsData: [...state.dialogsData]
-            };
-            for (let i of stateCopy.dialogsData) {
-                i.isActive = false;
+                dialogsData: state.dialogsData.map(el => {
+                    if (el.id === action.id) {
+                        return { ...el, isActive: true }
+                    }
+                    else
+                        return { ...el, isActive: false }
+                }),
             }
-            let path = stateCopy.dialogsData[action.id - 1];
-            path.isActive = !path.isActive;
-            return stateCopy;
         case CHANGE_MESSAGE_TEXT:
             return {
                 ...state,

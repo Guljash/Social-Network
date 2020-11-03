@@ -4,7 +4,7 @@ import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
 
 const Dialogs = (props) => {
-
+  console.log(props);
   const dialogsElements = props.dialogsPage.dialogsData.map(el => (<Dialog state={el} key={el.id} setActive={props.setActive} />))
 
   const messagesElements = props.dialogsPage.messageData.map(el => (<Message text={el.text} key={el.id} isMyMessage={el.isMyMessage} />))
